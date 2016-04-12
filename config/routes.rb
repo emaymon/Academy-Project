@@ -5,8 +5,15 @@ Rails.application.routes.draw do
   get 'accounts/login' => 'sessions#new'
   post 'accounts/login' => 'sessions#create'
   get 'accounts/logout' => 'sessions#destroy'
-  get 'accounts/:app_key' => 'accounts#show'
 
+#Account
+  get 'accounts/:app_key' => 'accounts#show'
+  get 'accounts/:app_key/features' => 'accounts#show_account_features'
+  post 'accounts/:app_key/features/:id' => 'accounts#enable_feature'
+  delete 'accounts/:app_key/features/:id' => 'accounts#disable_feature'
+
+#YotPo Features
+  get 'features' => 'features#index'
   mount Resque::Server.new, :at => '/resque'
 
   # resources :sessions, :only => [:index, :show]
