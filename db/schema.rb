@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160321164736) do
+ActiveRecord::Schema.define(version: 20160417072645) do
 
   create_table "activity_types", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20160321164736) do
     t.string   "app_key",          limit: 255, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "details",          limit: 255
   end
 
   add_index "logs", ["activity_type_id"], name: "fk_rails_1670773713", using: :btree
