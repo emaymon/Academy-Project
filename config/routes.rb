@@ -14,17 +14,8 @@ Rails.application.routes.draw do
 
 #YotPo Features
   get 'features' => 'features#index'
+
   mount Resque::Server.new, :at => '/resque'
-
-  # resources :sessions, :only => [:index, :show]
-  #
-  # get 'accounts' => 'sessions#index'
-  # get 'accounts/:id' => 'sessions#show'
-  # get 'accounts/:id/cool' => 'sessions#show_col'
-  # get 'group/:g_id/member/:m_id' => 'sessions#grouping'
-
-
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
