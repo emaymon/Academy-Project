@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
 #YotPo Features
   get 'features' => 'features#index'
+  get 'featuresJ' => 'features#featuresJson'
+  get 'featuresJ/:id' => 'features#featureById'
 
   mount Resque::Server.new, :at => '/resque'
 

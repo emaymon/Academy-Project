@@ -14,14 +14,14 @@ class AccountsController < ApplicationController
   end
 
   def show_account_features
-    features = Api::Account.get_account_features(params[:app_key])
-    if features
+    @features = Api::Account.get_account_features(params[:app_key])
+    if @features
       details_log = 'Successfully retrived account features'
     else
-      features = error_message('Unable to retrive account features')
+      @features = error_message('Unable to retrive account features')
       details_log = 'Faild to retrive account features'
     end
-    render json: features
+    render json: @features
     write_to_log('Elad', 'Get Account Features', params[:app_key], details_log)
   end
 
