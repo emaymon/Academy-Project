@@ -14,14 +14,14 @@ class AccountsController < ApplicationController
   end
 
   def show_account_features
-    features = Api::Account.get_account_features(params[:app_key])
-    if features
+    @features = Api::Account.get_account_features(params[:app_key])
+    if @features
       details_log = 'Successfully retrived account features'
     else
-      features = error_message('Unable to retrive account features')
+      @features = error_message('Unable to retrive account features')
       details_log = 'Faild to retrive account features'
     end
-    render json: features
+    render json: @features
     write_to_log('Elad', 'Get Account Features', params[:app_key], details_log)
   end
 
@@ -31,7 +31,7 @@ class AccountsController < ApplicationController
       details_log = "Successfully enabled feature no.#{params[:id]}"
     else
       enabled_feature = error_message('Unable to enable feature')
-      details_log = 'Faild to enable feature'
+      details_log = "Faild to enable feature no.#{params[:id]}"
     end
     render json: enabled_feature
     write_to_log('Elad', 'Enable Feature', params[:app_key], details_log)
@@ -43,7 +43,7 @@ class AccountsController < ApplicationController
       details_log = "Successfully disabled feature no.#{params[:id]}"
     else
       disabled_feature = error_message('Unable to disable feature')
-      details_log = 'Faild to disable feature'
+      details_log = "Faild to disable feature no.#{params[:id]}"
     end
     render json: disabled_feature
     write_to_log('Elad', 'Disable Feature', params[:app_key], details_log)

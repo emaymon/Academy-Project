@@ -1,18 +1,6 @@
-require 'app/helpers/sessions_helper'
 class SessionsController < ApplicationController
 
-  def new
-
-  end
-
-  def create
-    user = AdminUser.find_by(name: params[:session][:name])
-    if user && user.authenticate(params[:session][:password])
-      log_in user
-      redirect_to user
-    else
-      flash.now[:danger] = 'Invalid email/password combination'
-      render 'new'
-    end
+  def index
+    render :index
   end
 end
