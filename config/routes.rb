@@ -2,10 +2,6 @@ require 'resque-history/server'
 
 Rails.application.routes.draw do
 
-  get 'accounts/login' => 'sessions#new'
-  post 'accounts/login' => 'sessions#create'
-  get 'accounts/logout' => 'sessions#destroy'
-
 #Account
   get 'accounts/:app_key' => 'accounts#show'
   get 'accounts/:app_key/features' => 'accounts#show_account_features'
